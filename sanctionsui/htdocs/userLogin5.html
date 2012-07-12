@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb">
+<head>
+<link rel="shortcut icon" href="/joomla/images/favicon.ico" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="elektrifi, blaze, elektrifi blaze, hadoop, lucene, ubuntu, mapreduce, hdfs, hbase" />
+  <meta name="title" content="Blaze Sanctions Screening Demo" />
+  <meta name="author" content="Jonathan Forbes" />
+
+  <meta name="description" content="Elektrifi, shockingly powerful data processing." />
+  <meta name="generator" content="Hand cranked" />
+  <title>Blaze Sanctions Screening Demo</title>
+  <link href="/joomla/templates/ja_purity/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <script type="text/javascript" src="/joomla/media/system/js/mootools.js"></script>
+  <script type="text/javascript" src="/joomla/media/system/js/caption.js"></script>
+
+
+<link rel="stylesheet" href="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/system/css/system.css" type="text/css" />
+<link rel="stylesheet" href="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/system/css/general.css" type="text/css" />
+<link rel="stylesheet" href="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/ja_purity/css/template.css" type="text/css" />
+
+<script language="javascript" type="text/javascript" src="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/ja_purity/js/ja.script.js"></script>
+
+<script language="javascript" type="text/javascript">
+var rightCollapseDefault='show';
+var excludeModules='38';
+</script>
+<script language="javascript" type="text/javascript" src="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/ja_purity/js/ja.rightcol.js"></script>
+
+<link rel="stylesheet" href="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/ja_purity/css/menu.css" type="text/css" />
+<link rel="stylesheet" href="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/ja_purity/styles/background/lighter/style.css" type="text/css" />
+<link rel="stylesheet" href="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/ja_purity/styles/elements/black/style.css" type="text/css" />
+
+<!--[if IE 7.0]>
+<style type="text/css">
+.clearfix {display: inline-block;}
+</style>
+<![endif]-->
+
+<style type="text/css">
+#ja-header,#ja-mainnav,#ja-container,#ja-botsl,#ja-footer {width: 97%;margin: 0 auto;}
+#ja-wrapper {min-width: 100%;}
+</style>
+
+        <link rel="stylesheet" type="text/css" href="../include/dojoroot/dijit/themes/tundra/tundra.css"
+        />
+        <style type="text/css">
+            body, html { font-family:helvetica,arial,sans-serif; font-size:90%; }
+        </style>
+		<style type="text/css">
+			@import "../include/dojoroot/dijit/themes/tundra/tundra.css";
+    		@import "../include/dojoroot/dojo/resources/dojo.css"
+  		</style>
+				
+    <script type="text/javascript" src="../include/dojoroot/dojo/dojo.js" 
+		djConfig="parseOnLoad: true">	
+    </script>
+    <script type="text/javascript">
+        dojo.require("dijit.form.Button");
+        dojo.require("dijit.Dialog");
+        dojo.require("dijit.form.TextBox");
+        dojo.require("dijit.form.DateTextBox");
+        dojo.require("dijit.form.TimeTextBox");
+
+        dojo.addOnLoad(function() {
+            formDlg = dijit.byId("formDialog");
+            // connect to the button so we display the dialog on click:
+            dojo.connect(dijit.byId("buttonThree"), "onClick", formDlg, "show");
+        });
+
+        function checkData() {
+            var data = formDlg.attr('value');
+            console.log(data);
+            if (data.sdate > data.edate) {
+                alert("Start date must be before end date");
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+	
+</head>
+
+<!-- body id="bd" class="fs5 FF" -->
+<body id="bd" class="tundra">
+<a name="Top" id="Top"></a>
+<ul class="accessibility">
+	<li><a href="#ja-content" title="Skip to content">Skip to content</a></li>
+	<li><a href="#ja-mainnav" title="Skip to main navigation">Skip to main navigation</a></li>
+	<li><a href="#ja-col1" title="Skip to first column">Skip to first column</a></li>
+
+	<li><a href="#ja-col2" title="Skip to second column">Skip to second column</a></li>
+</ul>
+
+<div id="ja-wrapper">
+
+<!-- BEGIN: HEADER -->
+<div id="ja-headerwrap">
+	<div id="ja-header" class="clearfix" style="background: url(http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/ja_purity/images/header/header2.jpg) no-repeat top right;">
+
+	<div class="ja-headermask">&nbsp;</div>
+
+			<h1 class="logo">
+
+			<a href="/joomla/index.php" title="Elektrifi"><span>Elektrifi</span></a>
+		</h1>
+	
+			<ul class="ja-usertools-font">
+	      <li><img style="cursor: pointer;" title="Increase font size" src="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/ja_purity/images/user-increase.png" alt="Increase font size" id="ja-tool-increase" onclick="switchFontSize('ja_purity_ja_font','inc'); return false;" /></li>
+		  <li><img style="cursor: pointer;" title="Default font size" src="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/ja_purity/images/user-reset.png" alt="Default font size" id="ja-tool-reset" onclick="switchFontSize('ja_purity_ja_font',5); return false;" /></li>
+		  <li><img style="cursor: pointer;" title="Decrease font size" src="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/ja_purity/images/user-decrease.png" alt="Decrease font size" id="ja-tool-decrease" onclick="switchFontSize('ja_purity_ja_font','dec'); return false;" /></li>
+		</ul>
+		<script type="text/javascript">var CurrentFontSize=parseInt('5');</script>
+
+		
+			<div id="ja-search">
+			<form action="index.php" method="post">
+	<div class="search">
+		<input name="searchword" id="mod_search_searchword" maxlength="20" alt="Search" class="inputbox" type="text" size="20" value="search..."  onblur="if(this.value=='') this.value='search...';" onfocus="if(this.value=='search...') this.value='';" />	</div>
+	<input type="hidden" name="task"   value="search" />
+	<input type="hidden" name="option" value="com_search" />
+	<input type="hidden" name="Itemid" value="27" />
+</form>
+		</div>
+
+	
+	</div>
+</div>
+<!-- END: HEADER -->
+
+<!-- BEGIN: MAIN NAVIGATION -->
+<!-- END: MAIN NAVIGATION -->
+
+<div id="ja-containerwrap-fr">
+<div id="ja-containerwrap2">
+	<div id="ja-container">
+	<div id="ja-container2" class="clearfix">
+
+		<div id="ja-mainbody-fr" class="clearfix">
+
+		<!-- BEGIN: CONTENT -->
+		<div id="ja-contentwrap">
+		<div id="ja-content">
+
+<div class="article-content">
+<h2>Blaze Sanctions Screening Demo</h2>
+
+ This demo is an introduction to the capabilities of Elektrifi's Sanctions Screening service.
+ <ul>
+ 	<li>You can test security and access control by logging in to the service.</li>
+ 	<li>You can manually key in a selection of your test data to check how the scoring system works.</li>
+	<li>You can upload a file of your test customer data to see how the production processes work.</li>
+ </ul>
+ We've applied just a few restrictions to the demo compared to the production service:  
+ <ul>
+ 	<li>You'll use a demo account rather than set up your own individual account.</li>
+ 	<li>You won't assume an administration role.</li>
+	<li>You can upload a small file (< 10K) of your test customer data.</li>	
+ </ul>    
+ Now let's login to start the demo...<p />
+ 
+        <div dojoType="dijit.Dialog" id="formDialog" title="Elektrifi Blaze Sanctions Screening Login" execute="alert('submitted w/args:\n' + dojo.toJson(arguments[0], true));">
+            <table>
+                <tr>
+                    <td>
+                        <label for="username">
+                            Username:
+                        </label>
+                    </td>
+                    <td>
+                        <input dojoType="dijit.form.TextBox" type="text" name="username" id="username" 
+							value="demoUser" size="25" maxlength="25" readonly="true">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="passwordname">
+                            Password:
+                        </label>
+                    </td>
+                    <td>
+                        <input dojoType="dijit.form.TextBox" type="password" name="password" id="password" 
+						value="lk23_yo91#" size="25" maxlength="25" readonly="true">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="2">
+                        <button dojoType="dijit.form.Button" type="submit" onClick="return dijit.byId('formDialog').isValid();">
+                            Login
+                        </button>
+                        <button dojoType="dijit.form.Button" type="button" onClick="dijit.byId('formDialog').hide();">
+                            Reset
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--
+		<button id="buttonThree" dojoType="dijit.form.Button" type="button">
+            Login
+        </button>
+		-->
+   
+ 		<script>  
+		dojo.xhrPost({
+    		content : {
+        		login : dojo.byId('username').value,
+        		password : dojo.byId('password').value
+    		},
+    		url: '/Login/DoLogin/',
+		    load: function(response, ioArgs) {
+        		if ('url:' == response.substr(0, 4)) {
+            		location.href = response.substr(4);
+        		} else {
+            		alert(response);
+        		}
+    		}
+		});   
+		</script>
+</div>
+
+
+<span class="article_separator">&nbsp;</span>
+		</div>
+		</div>
+		<!-- END: CONTENT -->
+
+				<!-- BEGIN: LEFT COLUMN -->
+		<div id="ja-col1">
+
+					<div class="moduletable_menu">
+					<!-- <h3></h3> -->
+					<ul class="menu"><li class="item1"><a href="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/"><span>Home</span></a></li>
+					<!-- li id="current" class="active item27"><a href="/joomla/index.php?option=com_content&amp;view=article&amp;id=50&amp;Itemid=27"><span>Our Products</span></a></li><li class="parent item53"><a href="/joomla/index.php?option=com_content&amp;view=article&amp;id=53&amp;Itemid=53"><span>Our Services</span></a></li><li class="item60"><a href="/joomla/index.php?option=com_content&amp;view=article&amp;id=20&amp;Itemid=60"><span>Our Support</span></a></li><li class="item50"><a href="/joomla/index.php?option=com_content&amp;view=category&amp;id=1&amp;Itemid=50"><span>News</span></a></li><li class="item37"><a href="/joomla/index.php?option=com_content&amp;view=article&amp;id=55&amp;Itemid=37"><span>Contact Us</span></a></li><li class="item61"><a href="/joomla/index.php?option=com_content&amp;view=article&amp;id=56&amp;Itemid=61"><span>About Us</span></a></li> -->
+					</ul>		</div>
+			
+			<!-- 
+			
+			<div class="moduletable_menu">
+
+					<h3>Key Concepts</h3>
+					<ul class="menu"><li class="item40"><a href="/joomla/index.php?option=com_content&amp;view=article&amp;id=26&amp;Itemid=40"><span>Storing Data At Scale</span></a></li><li class="item38"><a href="/joomla/index.php?option=com_content&amp;view=article&amp;id=24&amp;Itemid=38"><span>Processing Data At Scale</span></a></li><li class="item43"><a href="/joomla/index.php?option=com_content&amp;view=article&amp;id=43&amp;Itemid=43"><span>Querying Data At Scale</span></a></li></ul>		</div>
+
+			</div>
+			<br />
+			-->
+		<!-- END: LEFT COLUMN -->
+		
+		</div>
+
+		
+	</div>
+
+	</div>
+</div>
+</div>
+
+<!-- BEGIN: FOOTER -->
+<div id="ja-footerwrap">
+<div id="ja-footer" class="clearfix">
+
+	<div id="ja-footnav">
+		
+	</div>
+
+	<div class="copyright">
+		<script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-341387-6']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+<div>Copyright &#169; 2011 Elektrifi, a division of Elinea Consulting Ltd. All Rights Reserved.</div>
+
+<div></div>
+	</div>
+
+	<div class="ja-cert">
+		
+    <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank" title="Our site is valid CSS" style="text-decoration: none;">
+		<img src="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/ja_purity/images/but-css.gif" border="none" alt="Our site is valid CSS" />
+		</a>
+		<a href="http://validator.w3.org/check/referer" target="_blank" title="Our site is valid XHTML 1.0 Transitional" style="text-decoration: none;">
+		<img src="http://ec2-46-51-171-85.eu-west-1.compute.amazonaws.com/joomla/templates/ja_purity/images/but-xhtml10.gif" border="none" alt="Our site is valid XHTML 1.0 Transitional" />
+		</a>
+
+	</div>
+
+	<br />
+</div>
+</div>
+<!-- END: FOOTER -->
+
+</div>
+
+
+
+</body>
+
+</html>
